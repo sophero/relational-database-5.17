@@ -46,6 +46,15 @@ get '/read_post' do
     erb :read_post
 end
 
+get '/create_post' do
+    erb :create_post
+end
+
+post '/create_post' do
+    Blog.create(title: params[:title], category: params[:category], content: params[:content], user_id: session[:user_id])
+    redirect '/'
+end
+
 #
 # get '/profile' do
 #     @user = User.find(session[:user_id])

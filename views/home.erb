@@ -18,10 +18,12 @@
 
     <p>Your blog posts are listed below. Click on a post's title to view that blog post in full.</p>
 
+    <p><a href="/create_post">Create a new post</a></p>
+
     <% @blogs.each do |blog| %>
 
         <div class="blog-post__title">
-            <a href="/read_post?post_id=<%= blog.id %>"><%= blog.title %></a> 
+            <a href="/read_post?post_id=<%= blog.id %>"><%= blog.title %></a>
         </div>
 
     <% end %>
