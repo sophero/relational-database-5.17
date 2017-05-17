@@ -1,0 +1,29 @@
+<% if !@user %>
+
+    <h1>Welcome!</h1>
+
+    <p>Please log in below, or <a href="/sign_up">click here to sign up</a>.</p>
+
+    <div class="log-in-form__container">
+        <form action="/login" method="post">
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input type="submit">
+        </form>
+    </div>
+
+<% else %>
+
+    <h1>Welcome, <%= @user.username %>!</h1>
+
+    <p>Your blog posts are listed below. Click on a post's title to view that blog post in full.</p>
+
+    <% @blogs.each do |blog| %>
+
+        <div class="blog-post__title">
+            <a href="/read_post?post_id=<%= blog.id %>"><%= blog.title %></a> 
+        </div>
+
+    <% end %>
+
+<% end %>
