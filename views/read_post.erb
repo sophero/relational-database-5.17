@@ -13,3 +13,33 @@
 <div class="post-content">
     <p><%= @post.content %></p>
 </div>
+
+
+<h3>Comments</h3>
+
+<div class="comment-list">
+
+    <% @comments.each do |comment| %>
+
+        <div class="comment__author">
+            <%= User.find(comment.user_id).username %>
+        </div>
+        <div class="comment__content">
+            <%= comment.content %>
+        </div>
+
+    <% end %>
+
+</div>
+
+<p>Leave a comment below.</p>
+
+<div class="create-comment-form__container">
+    <form id="create-comment-form" action="/create_comment" method="post">
+        <input type="hidden" name="blog_id" value="<%= @post.id %>">
+        <div class="create-comment-form__textarea">
+            <textarea name="content" rows="8" cols="80"></textarea>
+        </div>
+        <input type="submit">
+    </form>
+</div>
