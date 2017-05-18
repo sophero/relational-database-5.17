@@ -1,0 +1,14 @@
+
+<h1><%= @user.username %>'s Profile</h1>
+
+<p>Blog posts are listed below.</p>
+
+<div class="blogs-list">
+    <% @blogs.each do |blog| %>
+
+        <div class="blog-post__title">
+            <a href="/read_post?post_id=<%= blog.id %>"><%= blog.title %></a>
+        </div>
+
+    <% end %>
+</div>

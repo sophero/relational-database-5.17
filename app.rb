@@ -18,12 +18,6 @@ get '/sign_up' do
     erb :sign_up
 end
 
-post '/create_user' do
-    user = User.create(username: params[:username], password: params[:password])
-    session[:user_id] = user.id
-    redirect '/'
-end
-
 post '/login' do
     user = User.where(username: params[:username]).first
     if user.password == params[:password]
@@ -32,6 +26,23 @@ post '/login' do
         p session
     end
     redirect '/'
+end
+
+get '/users' do
+    @users = User.all
+    erb :users
+end
+
+post '/create_user' do
+    user = User.create(username: params[:username], password: params[:password])
+    session[:user_id] = user.id
+    redirect '/'
+end
+
+get '/profile' do
+    @user = User.find(params[:user_id])
+    @blogs = @user.blogs
+    erb :profile
 end
 
 get '/read_post' do
