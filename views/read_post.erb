@@ -34,14 +34,18 @@
 
 </div>
 
+<% if session[:user_id] %>
+
 <p>Leave a comment below.</p>
 
-<div class="create-comment-form__container">
-    <form id="create-comment-form" action="/create_comment" method="post">
-        <input type="hidden" name="blog_id" value="<%= @post.id %>">
-        <div class="create-comment-form__textarea">
-            <textarea name="content" rows="8" cols="80"></textarea>
-        </div>
-        <input type="submit">
-    </form>
-</div>
+    <div class="create-comment-form__container">
+        <form id="create-comment-form" action="/create_comment" method="post">
+            <input type="hidden" name="blog_id" value="<%= @post.id %>">
+            <div class="create-comment-form__textarea">
+                <textarea name="content" rows="8" cols="80"></textarea>
+            </div>
+            <input type="submit">
+        </form>
+    </div>
+
+<% end %>

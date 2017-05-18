@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-    has_many :blogs
+    has_many :blogs, dependent: :destroy
     has_many :comments
 
 end
@@ -8,7 +8,7 @@ end
 class Blog < ActiveRecord::Base
 
     belongs_to :user
-    has_many :comments
+    has_many :comments, dependent: :destroy
 
 end
 
