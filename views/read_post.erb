@@ -21,8 +21,10 @@
 
     <% @comments.each do |comment| %>
 
+        <% author = User.find(comment.user_id) %>
+
         <div class="comment__author">
-            <%= User.find(comment.user_id).username %>
+            <a href="/profile?user_id=<%= author.id %>"><%= author.username %></a>
         </div>
         <div class="comment__content">
             <%= comment.content %>
