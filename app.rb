@@ -39,14 +39,14 @@ post '/create_user' do
     redirect '/'
 end
 
-get '/profile' do
-    @user = User.find(params[:user_id])
+get '/profile/:id' do
+    @user = User.find(params[:id])
     @blogs = @user.blogs
     erb :profile
 end
 
-get '/read_post' do
-    @post = Blog.find(params[:post_id])
+get '/read_post/:id' do
+    @post = Blog.find(params[:id])
     @comments = @post.comments
     erb :read_post
 end
@@ -64,7 +64,7 @@ post '/create_comment' do
     user_id = session[:user_id]
     blog_id = params[:blog_id]
     Comment.create(user_id: user_id, blog_id: blog_id, content: params[:content])
-    redirect "/read_post?post_id=#{blog_id}"
+    redirect "/read_post/#{blog_id}"
 end
 
 post '/logout' do

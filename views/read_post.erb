@@ -24,7 +24,7 @@
         <% author = User.find(comment.user_id) %>
 
         <div class="comment__author">
-            <a href="/profile?user_id=<%= author.id %>"><%= author.username %></a>
+            <a href="/profile/<%= author.id %>"><%= author.username %></a>
         </div>
         <div class="comment__content">
             <%= comment.content %>
